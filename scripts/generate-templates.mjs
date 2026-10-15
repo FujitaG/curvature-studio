@@ -382,7 +382,18 @@ for (const [path, data] of [
 ]) {
   const text = `${JSON.stringify(data, null, 2)}\n`;
   if (check) {
-    if (readFileSync(path, 'utf8') !== text) throw new Error(`${path}: stale catalog; run npm run bake`);
+    const stored = readFileSync(path, 'utf8');
+    if (stored !== text) {
+      const differences = [];
+      function inspect(a, b, key) {
+        if (differences.length >= 12 || a === b) return;
+        if (a && b && typeof a === 'object' && typeof b === 'object') {
+          for (const field of new Set([...Object.keys(a), ...Object.keys(b)])) inspect(a[field], b[field], `${key}.${field}`);
+        } else differences.push({ path: key, stored: a, generated: b });
+      }
+      inspect(JSON.parse(stored), data, 'catalog');
+      throw new Error(`${path}: stale catalog; run npm run bake. First differences: ${JSON.stringify(differences)}`);
+    }
   } else writeFileSync(path, text);
 }
 console.log(`${check ? 'verified' : 'generated'} ${fixedTemplates.length} fixed templates from geometric constructions`);

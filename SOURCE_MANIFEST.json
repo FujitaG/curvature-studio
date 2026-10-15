@@ -65,7 +65,7 @@
     "RELEASING.md": "b6ca5e22cb062ad511c7b359a03f49393706c03623cbc8696fafaefad4892d4b",
     "scripts/check-math-sensitivity.mjs": "f0053ee6fb546b078ebbeaa3c6341c397b4aa3658a6b46b747f5f6cb4f0e2f47",
     "scripts/check-public-assets.mjs": "fbdd1a2f8628c3dae74dfbe9ef78434a864800ae19ff87f4375a1e35e81bb2d7",
-    "scripts/generate-templates.mjs": "52d4b465dac86cbc801bb20e34031dad045742a826e5c3fd17f131bc3fb9e6a7",
+    "scripts/generate-templates.mjs": "33f8af2401e10aa811a5f33eaa64d8ce87f7e9cae5e92ff80c87dc810726474f",
     "scripts/polyhedra.mjs": "3356d8b616304729e4fca0ce471f28601dd79135ee54b81ad921e69356828cae",
     "scripts/polyhedra.test.mjs": "ced3f977bab9ab51d68edaf674b662d1663e5cb63667b56c81f0d2e0bdb0ddc5",
     "scripts/prepare-public.mjs": "41014d0c76dc590962fbac701f7f24e0e2a30637d41d6b143b6ecf6f0c3b3251",
