@@ -8,6 +8,8 @@ or unpublished research files from the parent workspace.
 
 - Replaced externally sourced polyhedron coordinate tables with independent,
   reproducible geometric constructions for the built-in template catalog.
+- Canonicalized oriented face cycles and face ordering so template regeneration
+  does not depend on the atan2 branch-cut convention of the CPU/backend.
 - Added geometry checks for face types, regularity, convexity and closed surfaces,
   plus browser checks of every built-in template and its image exports.
 - Strengthened mathematical validation with independent covariance and transport

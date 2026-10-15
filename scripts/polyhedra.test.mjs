@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { wythoff, snub, elongatedSquareGyrobicupola } from './polyhedra.mjs';
+import { wythoff, snub, elongatedSquareGyrobicupola, canonicalFaces } from './polyhedra.mjs';
 
 const dot = (a, b) => a.reduce((sum, x, i) => sum + x * b[i], 0);
 const distances = points => points.flatMap((a, i) => points.slice(i + 1).map(b => Math.hypot(...a.map((x, j) => x - b[j])))).sort((a, b) => a - b);
@@ -30,5 +30,23 @@ describe('independent geometric construction parameters', () => {
     for (let i = 0; i < actual.length; i += 1) expect(actual[i] / actual[0]).toBeCloseTo(reference[i] / reference[0], 10);
     const gyro = distances(elongatedSquareGyrobicupola());
     expect(gyro.some((d, i) => Math.abs(d - actual[i]) > 0.01)).toBe(true);
+  });
+});
+
+describe('oriented face serialization across arithmetic backends', () => {
+  it('ignores cyclic starts and enumeration order but preserves winding', () => {
+    const faces = [[12, 4, 5, 13], [23, 22, 12, 13], [1, 4, 3]];
+    const expected = [[4, 5, 13, 12], [12, 13, 23, 22], [1, 4, 3]];
+    const original = structuredClone(faces);
+    expect(canonicalFaces(faces)).toEqual(expected);
+    for (let shift = 0; shift < 4; shift += 1) {
+      const reordered = faces.map(face => {
+        const offset = shift % face.length;
+        return [...face.slice(offset), ...face.slice(0, offset)];
+      }).reverse();
+      expect(canonicalFaces(reordered)).toEqual(expected);
+    }
+    expect(canonicalFaces(faces.map(face => [...face].reverse()))).not.toEqual(expected);
+    expect(faces).toEqual(original);
   });
 });

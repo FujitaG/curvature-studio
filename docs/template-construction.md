@@ -13,6 +13,9 @@ npm run bake:check  # compare with checked-in catalogs without writing
 `npm run check` includes the second command. Node 22 is the reference toolchain;
 the check compares serialized values rounded to ten decimal places. This is not
 a promise of bitwise floating-point reproducibility on every future engine.
+Oriented faces start at their smallest vertex ID and sort by length, then by
+vertex IDs. This removes the platform-dependent cyclic start at atan2's ±π cut
+without reversing face winding, and makes the Tutte boundary choice deterministic.
 
 ## Construction methods
 

@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { generatedSolids } from './polyhedra.mjs';
+import { generatedSolids, canonicalFaces } from './polyhedra.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const target = resolve(here, '../src/data/templates.json');
@@ -195,7 +195,7 @@ function supportingPlaneFaces(points) {
       }
     }
   }
-  return [...faces.values()].sort((a, b) => b.length - a.length || a[0] - b[0]);
+  return canonicalFaces([...faces.values()]);
 }
 
 function edgeKey(a, b) {

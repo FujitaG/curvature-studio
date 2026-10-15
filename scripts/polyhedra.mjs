@@ -97,3 +97,16 @@ export const generatedSolids = [
   ['truncated-icosidodecahedron', 'Truncated icosidodecahedron', () => wythoff(5, [0, 1, 2]), 120, 180, 3],
   ['snub-dodecahedron', 'Snub dodecahedron', () => snub(5), 60, 150, 5]
 ];
+
+// atan2 can put a branch-cut vertex at either -pi or +pi across engines.
+// A face is an oriented cycle: canonicalize its start, never its winding.
+export function canonicalFaces(faces) {
+  return faces.map(face => {
+    const start = face.indexOf(Math.min(...face));
+    return [...face.slice(start), ...face.slice(0, start)];
+  }).sort((a, b) => {
+    if (a.length !== b.length) return b.length - a.length;
+    for (let i = 0; i < a.length; i += 1) if (a[i] !== b[i]) return a[i] - b[i];
+    return 0;
+  });
+}
