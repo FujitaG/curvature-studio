@@ -1,0 +1,285 @@
+{
+  "format": "curvature-studio/project",
+  "version": 1,
+  "metadata": {
+    "id": "example-cube-study-v1",
+    "title": "Cube study",
+    "notes": "Built-in cube (Q3), without braces. Every edge has Ollivier curvature 1/3 and effective curvature 1 - sqrt(21/101). Add a brace to explore the rigid-unit quotient.",
+    "createdAt": "2026-09-07T00:00:00.000Z",
+    "updatedAt": "2026-09-07T00:00:00.000Z"
+  },
+  "calculation": {
+    "engine": "curvature-studio/math@1",
+    "graphModel": "undirected-unweighted-rigid-quotient",
+    "laziness": 0.5,
+    "tailTolerance": 1e-10,
+    "maxIterations": 200000
+  },
+  "session": {
+    "format": "curvature-studio/session",
+    "version": 2,
+    "doc": {
+      "format": "curvature-studio/doc",
+      "version": 1,
+      "vertices": [
+        {
+          "id": 1,
+          "x": -96,
+          "y": 0,
+          "p3": [
+            -0.5,
+            -0.5,
+            -0.5
+          ],
+          "baked3d": true
+        },
+        {
+          "id": 2,
+          "x": 0,
+          "y": -96,
+          "p3": [
+            -0.5,
+            -0.5,
+            0.5
+          ],
+          "baked3d": true
+        },
+        {
+          "id": 3,
+          "x": -32,
+          "y": 0,
+          "p3": [
+            -0.5,
+            0.5,
+            -0.5
+          ],
+          "baked3d": true
+        },
+        {
+          "id": 4,
+          "x": 0,
+          "y": -32,
+          "p3": [
+            -0.5,
+            0.5,
+            0.5
+          ],
+          "baked3d": true
+        },
+        {
+          "id": 5,
+          "x": 0,
+          "y": 96,
+          "p3": [
+            0.5,
+            -0.5,
+            -0.5
+          ],
+          "baked3d": true
+        },
+        {
+          "id": 6,
+          "x": 96,
+          "y": 0,
+          "p3": [
+            0.5,
+            -0.5,
+            0.5
+          ],
+          "baked3d": true
+        },
+        {
+          "id": 7,
+          "x": 0,
+          "y": 32,
+          "p3": [
+            0.5,
+            0.5,
+            -0.5
+          ],
+          "baked3d": true
+        },
+        {
+          "id": 8,
+          "x": 32,
+          "y": 0,
+          "p3": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "baked3d": true
+        }
+      ],
+      "edges": [
+        {
+          "id": 1,
+          "a": 1,
+          "b": 2,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 2,
+          "a": 1,
+          "b": 3,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 3,
+          "a": 1,
+          "b": 5,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 4,
+          "a": 2,
+          "b": 4,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 5,
+          "a": 2,
+          "b": 6,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 6,
+          "a": 3,
+          "b": 4,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 7,
+          "a": 3,
+          "b": 7,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 8,
+          "a": 4,
+          "b": 8,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 9,
+          "a": 5,
+          "b": 6,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 10,
+          "a": 5,
+          "b": 7,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 11,
+          "a": 6,
+          "b": 8,
+          "kind": "bond",
+          "weight": 1
+        },
+        {
+          "id": 12,
+          "a": 7,
+          "b": 8,
+          "kind": "bond",
+          "weight": 1
+        }
+      ]
+    },
+    "view": "2d",
+    "metric": "keff",
+    "labelsVisible": true,
+    "camera2d": {
+      "tx": 640,
+      "ty": 440,
+      "scale": 1.6
+    },
+    "projection": "perspective",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "histogramCollapsed": false,
+    "style": {
+      "shared": {
+        "metricGradients": {
+          "keff": {
+            "type": "preset",
+            "preset": "studio"
+          },
+          "ollivier": {
+            "type": "preset",
+            "preset": "studio"
+          }
+        }
+      },
+      "view2d": {
+        "labelScale": 1,
+        "vertexFill": {
+          "enabled": true,
+          "color": "#2A2D31"
+        },
+        "vertexOutline": {
+          "enabled": true,
+          "color": "#FFFFFF"
+        },
+        "vertexSize": 4.5,
+        "vertexOutlineWidth": 1.5,
+        "verticesHidden": false,
+        "bondStyle": "single",
+        "bondCasing": {
+          "enabled": false,
+          "color": "#FFFFFF"
+        },
+        "bondCasingWidth": 1.5,
+        "braceColor": "#2A2D31",
+        "braceStyle": "double",
+        "bondWidth": 2
+      },
+      "view3d": {
+        "labelScale": 1,
+        "vertexFill": {
+          "enabled": true,
+          "color": "#2A2D31"
+        },
+        "vertexOutline": {
+          "enabled": true,
+          "color": "#FFFFFF"
+        },
+        "vertexSize": 4.5,
+        "vertexOutlineWidth": 1.5,
+        "verticesHidden": false,
+        "bondStyle": "single",
+        "bondCasing": {
+          "enabled": false,
+          "color": "#FFFFFF"
+        },
+        "bondCasingWidth": 1.5,
+        "braceColor": "#2A2D31",
+        "braceStyle": "double",
+        "bondWidth": 2
+      }
+    },
+    "customGradients": []
+  },
+  "resultsDisplay": {
+    "precision": 6
+  },
+  "extensions": {
+    "org.curvature-studio.example": {
+      "templateId": "cube"
+    }
+  }
+}

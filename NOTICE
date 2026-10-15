@@ -1,0 +1,9 @@
+Curvature Studio
+
+Copyright 2026 Daishi Fujita
+
+Research software for finite graph curvature and structural comparison.
+Application source and independently generated polyhedron templates are
+distributed under the Apache License, Version 2.0.
+The third-party Inter font is excluded from this source-license claim.
+See THIRD_PARTY.md and public/fonts/LICENSE.txt for its attribution and terms.
