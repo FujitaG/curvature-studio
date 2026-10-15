@@ -100,8 +100,7 @@ The application source and independently generated template catalog follow the
 [Apache-2.0 license](LICENSE). See the
 [template construction](docs/template-construction.md) for derivations and
 reproduction, and [THIRD_PARTY.md](THIRD_PARTY.md) for the separately licensed
-Inter font and provenance history. Older source archives used external coordinate
-tables and are not the current release candidate.
+Inter font and other dependency notices.
 
 For research, cite the software using [CITATION.cff](CITATION.cff) and record the
 release tag/commit, project/results JSON and calculation definition. Software

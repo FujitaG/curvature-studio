@@ -12,7 +12,7 @@ be numbers, not numeric strings. A leading UTF-8 BOM is accepted.
 
 ## Comparison workspace JSON
 
-Format `curvature-studio/workspace`, numeric version `1`; application 0.4.0 or newer.
+Format `curvature-studio/workspace`, numeric version `1`.
 Filename `comparison.curvature-workspace.json`. Schema: [workspace-v1.schema.json](public/schemas/workspace-v1.schema.json).
 Example: [cube-comparison.curvature-workspace.json](examples/cube-comparison.curvature-workspace.json).
 
@@ -64,7 +64,7 @@ The calculation descriptor is currently:
 ```
 
 Unsupported versions, engine IDs, graph models or parameter values reject the whole file.
-As of app 0.4.2, unknown keys inside `calculation` also reject the file; they cannot be
+unknown keys inside `calculation` also reject the file; they cannot be
 silently ignored as a new mathematical input. Put optional annotations in `extensions`.
 The engine tag must change when the calculation's semantics or numerical algorithm changes.
 Display-only changes do not require an engine change. Future optional metadata may be added
@@ -78,7 +78,7 @@ before changes are applied. `Undo open` holds one previous complete snapshot for
 normal Undo continues to operate on graph history. Neither history nor transient selection,
 current tool, open auxiliary panels, or the template library is part of the file.
 
-As of app 0.3.4, an invalid saved camera or projection is reset with a notice while the
+an invalid saved camera or projection is reset with a notice while the
 valid graph and metadata are loaded. A 2D camera is fitted to the graph; an invalid 3D
 camera is discarded and initialized by the view. All other validation remains strict.
 These notices are runtime-only and are never written into project/session files.
@@ -89,8 +89,6 @@ the previous autosave and all in-memory extensions and does not claim success. T
 no guarantee that a near-limit imported project can still be saved after adding data or
 materializing omitted defaults such as unit edge weights. Extensions are preserved;
 unsupported edge weights are rejected rather than replaced during serialization.
-Camera limits are expanded in app 0.3.4 without changing field names or schema versions;
-files using the expanded range require 0.3.4 or newer readers.
 
 Calculated values are not stored in project files. Opening a project requests current
 results; a matching completed in-memory calculation may be reused within the page session.
@@ -111,7 +109,7 @@ Filename: `<project-name>.results.json`
 | `calculation` | Engine and settings used, as in the project descriptor. |
 | `doc` | Complete document v1, including coordinates and 3D pin flags. |
 | `inputKey` | Canonical input identity: the full current calculation descriptor, sorted vertex IDs and edge records with ID, ordered endpoints, kind and normalized unit weight. Coordinates are excluded. This is an identity string, not a cryptographic digest. |
-| `applicationVersion`, `sampleUnit` | App version (separate from format/engine versions); currently `quotient-bond`. Added in app 0.5.0. |
+| `applicationVersion`, `sampleUnit` | App version (separate from format/engine versions); currently `quotient-bond`. |
 | `summary` | `quotientBonds` and `notConverged` counts; each quotient bond is counted once. |
 | `units[]` | `{vertexId, unitId}` for every input vertex, including isolated vertices. |
 | `quotientBonds[]` | `{index,a,b,ollivier,ollivierFrac,w1Frac,vInf,kEff,converged,iterations,evidence}`; `a,b` are unit IDs. Fractions are `[numerator,denominator]`. |
@@ -129,7 +127,7 @@ No NaN/Infinity sentinels are emitted. The app does not import results archives 
 calculation state. Open the associated project file, or extract its document input, to
 recompute a result.
 
-## Workspace lifecycle and browser preferences (app 0.3.0)
+## Workspace lifecycle and browser preferences
 
 The portable formats remain project v1, session v2 and style v2. Calculation engine tags,
 CSV/JSON field names, identifiers and numerical exports are independent of UI language.
@@ -143,7 +141,7 @@ page session; normal Undo does the same once the new document's edit history is 
 Undo/Redo. Undo history and the prior-project recovery snapshot are not portable or
 retained across reloads.
 
-As of app 0.3.2, document Undo/Redo stores changed vertex/edge records. History retains
+document Undo/Redo stores changed vertex/edge records. History retains
 at most 200 operations and 40,000 changed records; large replacements can therefore
 shorten the available history. Coordinates, optional 3D positions and pin flags are
 restored together. The separate whole-workspace recovery snapshot remains unchanged.
@@ -151,7 +149,7 @@ restored together. The separate whole-workspace recovery snapshot remains unchan
 display coordinates only, which are still saved in the same fields at full precision;
 the curvature calculation descriptor and all portable format versions remain unchanged.
 
-As of app 0.3.3, navigation may temporarily reduce the screen pixel ratio, small-object
+navigation may temporarily reduce the screen pixel ratio, small-object
 mesh detail and non-focused labels. These are runtime rendering choices, not stored
 project settings. Full geometry is used for picking and PNG export, and both PNG/SVG
 use the ordinary label visibility rules. PNG remains 2× the viewport dimensions.
@@ -159,7 +157,7 @@ Camera coordinates are saved at full precision; geometry detail, glyph caches, f
 diagnostics and navigation quality levels are excluded from every portable format.
 Curvature algorithms, tolerances, iteration limits and numerical exports are unchanged.
 
-As of app 0.3.4, the UI is English-only and ignores the legacy
+the UI is English-only and ignores the legacy
 `curvature-studio:language` preference; user text remains unchanged. Up to five recent template references
 (`curvature-studio:recent-templates`) and the dismissed first-use 3D hint
 (`curvature-studio:orbit-hint-seen`) are optional local browser preferences. They are
@@ -176,8 +174,8 @@ The 3D off-axis projection centre follows the available UI area at Fit/resize ti
 not serialized. Fog is disabled. Drawing radii scale with the median positive edge length
 (or extent when there are no nonzero edges), without modifying any vertex coordinates.
 
-As of app 0.3.5, `session.panels` optionally saves the boolean visibility of `histogram`,
-`inspector`, `legend`, and `hints`. In 0.3.8, `hints` controls the Interaction guide panel and `legend` controls shortcut text inside that guide (no separate legend panel). Missing settings default to true. Invalid known settings
+`session.panels` optionally saves the boolean visibility of `histogram`,
+`inspector`, `legend`, and `hints`. `hints` controls the Interaction guide panel and `legend` controls shortcut text inside that guide (no separate legend panel). Missing settings default to true. Invalid known settings
 are rejected. Older readers can open these files but ignore the new visibility settings.
 Histogram visibility is separate from `histogramCollapsed` and `histogramPos`; hiding a
 histogram does not remove its data or affect exports. The Results table's open state and
@@ -214,7 +212,7 @@ Unknown fields are ignored. Version mismatch rejects the whole document. The old
 `curvature-studio:doc:v1` is read as a migration source only. New autosaves contain a
 complete project or comparison in the IndexedDB v2 current envelope described above.
 
-## Unit edge weights (app 0.4.1)
+## Unit edge weights
 
 Every serialized edge has `weight: 1`, including Brace edges. JSON numbers `1` and
 `1.0` have identical meaning. A missing field in legacy input means 1; explicit
@@ -244,7 +242,7 @@ aggregation, with all-unit regression tests. Weight changes must enter computati
 cache identities and history invalidation; layout and appearance changes must not.
 See [the weight contract and future acceptance checklist](docs/model-scope.md).
 
-As of app 0.4.2, canonical live edges also require explicit unit weight. Legacy omissions
+canonical live edges also require explicit unit weight. Legacy omissions
 are normalized at construction/import boundaries. Editor, serializer and math input
 shapes share `src/graph/edge.ts`; direct math and Worker inputs reject non-unit weights.
 The unchanged calculation descriptor is shared between persistence, Worker requests,
@@ -398,10 +396,10 @@ edge_id, vertex_a, vertex_b, kind, quotient_edge, ollivier_num, ollivier_den, ol
 Exports are enabled only when both computations have finished for the current IDs and
 connectivity. The exporter itself also rejects stale or partial results. Finite but
 unconverged estimates are included with `converged=false`. Display rounding never changes
-CSV or results JSON numbers. The first twelve CSV columns retain their order and values. App 0.5.0 appends six evidence columns; consumers should read the header. Brace/intra rows leave evidence cells empty.
+CSV or results JSON numbers. Consumers should read columns by header name, including the six evidence columns. Brace/intra rows leave evidence cells empty.
 
 
-## 2D figure setup (app 0.3.6)
+## 2D figure setup
 
 The optional project v1 `figure` field stores export settings. It is not part of
 standalone document, session or style files. Older projects without it use defaults;
@@ -432,13 +430,12 @@ PNG is rendered from the same SVG. Other than the background, decoration follows
 the 2D style; editing selection and hover highlights are excluded.
 
 The JSON Schema defines `figure`. Invalid settings are rejected on import/export,
-using the shared project validation and size limits. Applications before 0.3.6
-ignore this optional field and cannot preserve these settings.
+using the shared project validation and size limits.
 
 Gradient stop IDs exist only during UI editing. Stored stops contain `position`
 and `color`. Names are trimmed on blur/Enter, not on every keystroke.
 
-## Color threshold (app 0.3.7)
+## Color threshold
 
 Alongside preset/custom/draft gradients, `style.shared.metricGradients.keff` and
 `.ollivier` accept the following. Project v1, session v2 and style v2 are unchanged.
@@ -459,15 +456,14 @@ Display rounding and Results precision do not affect classification.
 
 This is a display classification: calculations, histogram counts and bin boundaries
 are unchanged. Histogram bars use their bin-centre value for coloring. The fixed
-middle stop in Ollivier Custom mode does not apply to Threshold mode. Applications
-before 0.3.7 cannot interpret or preserve this gradient type.
+middle stop in Ollivier Custom mode does not apply to Threshold mode.
 
 Polyhedron input has its own [v1 JSON Schema](public/schemas/polyhedron-v1.schema.json)
 and [executable examples](src/import/examples.ts), separate from project files.
 TXT accepts the documented subset of McCooey-style text; mathematical-expression
 strings are not accepted in JSON. No external coordinate table is bundled.
 
-## Floating panels (app 0.3.8)
+## Floating panels
 
 The optional `session.panelLayout` field retains project v1 / session v2:
 
@@ -477,7 +473,7 @@ The optional `session.panelLayout` field retains project v1 / session v2:
 
 `guide.position` is optional; omission selects responsive default positioning.
 Its x/y values must be finite with absolute value at most one million.
-`guide.collapsed` and `thresholdExpanded` are booleans. Since app 0.5.2, absence
+`guide.collapsed` and `thresholdExpanded` are booleans. Absence
 of the entire panelLayout opens the guide and collapses threshold controls.
 Explicit collapse, visibility and position choices are preserved. Histogram
 position/collapse/visibility use `histogramPos`, `histogramCollapsed` and
@@ -495,7 +491,7 @@ The threshold line and transition band are interactive controls, excluded from
 histogram SVG/PNG exports. Graph and histogram colors use the saved shared style.
 
 
-## Internal extension boundary (app 0.5.0)
+## Internal extension boundary
 
 `src/project/model.ts` separates structure, layout2d, optional layout3d and presentation
 without introducing a public file version. Only canonical v1 project/workspace

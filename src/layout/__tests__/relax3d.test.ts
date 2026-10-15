@@ -12,7 +12,7 @@ describe('3D layout', () => {
     const before = structuredClone(fixture);
     const runner = createRelaxation(fixture);
     runner.stepUntil(Infinity);
-    // Recorded from the original 0.3.0 algorithm before this optimization.
+    // Recorded from the original algorithm before this optimization.
     const reference = [[0.006217611691487578, -0.2663583329856546, -0.47721620514183527], [-1, 0, 0],
       [-0.5113190381188695, -0.02338224467630698, 1.0352778072613362], [0.49458375825176726, -0.28967956029628117, 0.5579440781981821]];
     expect(runner.result().map((v) => v.id)).toEqual([2, 8, 9, 17]);

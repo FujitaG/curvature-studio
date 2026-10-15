@@ -131,15 +131,8 @@ verify projected vertices and nonblank downloaded 3D PNGs. WebGL is required;
 this suite does not count a fallback as a successful geometry check. It is not
 a physical-GPU benchmark or a proof of label readability on every display.
 
-## Replacement and saved work
+## Templates and saved projects
 
-Before 2026-10-15, 14 templates were baked from McCooey coordinate tables. Those
-tables and the parser have been removed from the distributable source, and the
-catalog regenerated from the constructions above. Old source archives and the
-private research repository's Git history are not cleaned retroactively; the
-public repository must start from a fresh staged tree, not a history import.
-
-Template IDs and names are preserved. Newly placed templates can have different
-vertex numbering, orientation, handedness and 2D layout. Saved projects contain
-their own vertices/edges/positions and are not rewritten. User import support for
-the existing text format remains available and does not bundle external data.
+Saved projects contain their own vertices, edges and positions. Regenerating the
+template catalog does not rewrite saved projects. User-import support for the
+documented polyhedron text format does not bundle any external coordinate table.

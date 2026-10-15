@@ -1,8 +1,7 @@
 # Releasing Curvature Studio
 
 The public repository contains the application, examples and its verification
-contract. Keep private manuscripts, review discussions, user projects, credentials,
-old coordinate tables and parent-repository history out of this repository.
+contract. Do not include credentials, user projects or generated development artifacts in releases.
 
 1. Update `package.json`, the lockfile root version, `CITATION.cff` and
    `CHANGELOG.md` together. Preserve Apache-2.0, `NOTICE` and third-party licenses.
@@ -27,14 +26,6 @@ CI uses read-only repository permissions and runs without Cloudflare credentials
 Dependabot proposes updates weekly; it neither merges nor deploys them. Enable
 private vulnerability reporting and require the verification check on the main
 branch. Repository settings are not configured by the workflow itself.
-
-## Public and internal version numbers
-
-Public release numbering begins at 0.1.0, derived from internal development
-version 0.5.11. The package version, citation and public tag use the public number;
-keep any internal baseline identifier in provenance records rather than reusing it
-as a public version. The website can be deployed independently, so identify the
-source commit as well as its displayed version when comparing installations.
 
 ## Website deployment is separate
 

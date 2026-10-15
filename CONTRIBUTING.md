@@ -21,12 +21,7 @@ Useful focused checks:
 | 3D lifecycle and navigation | `npm run qa:reopen3d`, `npm run qa:navigation` |
 | Import errors and layout | `npm run qa:imports-layout` |
 
-`qa:storage-migration` is an optional legacy-to-current integration check. It
-requires `QA_BASELINE_DIST=/absolute/path/to/old/dist`, built from the actual
-0.5.7 (`d054305`) baseline. That historical build is not distributed in this
-standalone repository because it predates the independent template catalog.
-Do not substitute the current build or count an unavailable baseline as a pass.
-Current storage/CAS/migration semantics also have self-contained unit tests in
+Storage/CAS/migration semantics have self-contained unit tests in
 `src/storage/__tests__/`, included in `npm run check`.
 
 Record the commit, commands, exit codes, browser/OS and WebGL availability.

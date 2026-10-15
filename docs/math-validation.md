@@ -37,8 +37,7 @@ label precision and color threshold do not define the calculation.
 
 The definitions correspond to the paper’s half-lazy kernel, accumulated dipole
 variance, effective-curvature transform and edge-covariance/Stein equation.
-Pin the final paper version and release identifier when publishing the companion
-repository. The definitions here are self-contained; no private manuscript path
+Record the software release and the applicable paper version when reporting a calculation. The definitions here are self-contained; no private manuscript path
 is part of the public test contract.
 
 ## Independent reference, deliberately small
@@ -94,7 +93,7 @@ with eigenvalue 1/3, giving V=2/(1−1/9)=9/4; the other classes follow from the
 rational Stein solve. This graph and P4 detect misassignment between unequal edges.
 
 The `pre-optimization.json` fixture in the unit tests is a production snapshot
-from the optimization baseline (0.3.1, commit `222b993`). It protects behavior
+recorded before optimization. It protects behavior
 across refactoring; it is not one of the independently derived values above.
 
 ## Coverage is defined by failure modes, not test counts

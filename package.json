@@ -39,7 +39,6 @@
     "audit:all": "npm audit --audit-level=low",
     "qa:cross-browser": "node qa/cross-browser.mjs",
     "qa:end-comparison": "node qa/end-comparison.mjs",
-    "qa:storage-migration": "node qa/storage-migration.mjs",
     "qa:math": "node qa/math-contract.mjs",
     "test:math-sensitivity": "node scripts/check-math-sensitivity.mjs",
     "prepare:public": "node scripts/prepare-public.mjs",
