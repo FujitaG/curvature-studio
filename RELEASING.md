@@ -28,6 +28,14 @@ Dependabot proposes updates weekly; it neither merges nor deploys them. Enable
 private vulnerability reporting and require the verification check on the main
 branch. Repository settings are not configured by the workflow itself.
 
+## Public and internal version numbers
+
+Public release numbering begins at 0.1.0, derived from internal development
+version 0.5.11. The package version, citation and public tag use the public number;
+keep any internal baseline identifier in provenance records rather than reusing it
+as a public version. The website can be deployed independently, so identify the
+source commit as well as its displayed version when comparing installations.
+
 ## Website deployment is separate
 
 `npm run qa:hosting` tests local Cloudflare emulation and does not publish.

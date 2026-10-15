@@ -1,10 +1,11 @@
 # Changelog
 
-This standalone repository starts from Curvature Studio 0.5.11. Its initial
+Public releases start at **0.1.0**, based on the internal development version
+0.5.11. Internal version numbers are not the public release sequence. The initial
 commit is a curated source snapshot; it does not include the development history
 or unpublished research files from the parent workspace.
 
-## 0.5.11 — 2026-10-15
+## 0.1.0 — 2026-10-15
 
 - Replaced externally sourced polyhedron coordinate tables with independent,
   reproducible geometric constructions for the built-in template catalog.
