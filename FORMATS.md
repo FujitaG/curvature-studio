@@ -64,7 +64,7 @@ The calculation descriptor is currently:
 ```
 
 Unsupported versions, engine IDs, graph models or parameter values reject the whole file.
-unknown keys inside `calculation` also reject the file; they cannot be
+Unknown keys inside `calculation` also reject the file; they cannot be
 silently ignored as a new mathematical input. Put optional annotations in `extensions`.
 The engine tag must change when the calculation's semantics or numerical algorithm changes.
 Display-only changes do not require an engine change. Future optional metadata may be added
@@ -78,7 +78,7 @@ before changes are applied. `Undo open` holds one previous complete snapshot for
 normal Undo continues to operate on graph history. Neither history nor transient selection,
 current tool, open auxiliary panels, or the template library is part of the file.
 
-an invalid saved camera or projection is reset with a notice while the
+An invalid saved camera or projection is reset with a notice while the
 valid graph and metadata are loaded. A 2D camera is fitted to the graph; an invalid 3D
 camera is discarded and initialized by the view. All other validation remains strict.
 These notices are runtime-only and are never written into project/session files.
@@ -141,7 +141,7 @@ page session; normal Undo does the same once the new document's edit history is 
 Undo/Redo. Undo history and the prior-project recovery snapshot are not portable or
 retained across reloads.
 
-document Undo/Redo stores changed vertex/edge records. History retains
+Document Undo/Redo stores changed vertex/edge records. History retains
 at most 200 operations and 40,000 changed records; large replacements can therefore
 shorten the available history. Coordinates, optional 3D positions and pin flags are
 restored together. The separate whole-workspace recovery snapshot remains unchanged.
@@ -149,7 +149,7 @@ restored together. The separate whole-workspace recovery snapshot remains unchan
 display coordinates only, which are still saved in the same fields at full precision;
 the curvature calculation descriptor and all portable format versions remain unchanged.
 
-navigation may temporarily reduce the screen pixel ratio, small-object
+Navigation may temporarily reduce the screen pixel ratio, small-object
 mesh detail and non-focused labels. These are runtime rendering choices, not stored
 project settings. Full geometry is used for picking and PNG export, and both PNG/SVG
 use the ordinary label visibility rules. PNG remains 2× the viewport dimensions.
@@ -157,7 +157,7 @@ Camera coordinates are saved at full precision; geometry detail, glyph caches, f
 diagnostics and navigation quality levels are excluded from every portable format.
 Curvature algorithms, tolerances, iteration limits and numerical exports are unchanged.
 
-the UI is English-only and ignores the legacy
+The UI is English-only and ignores the legacy
 `curvature-studio:language` preference; user text remains unchanged. Up to five recent template references
 (`curvature-studio:recent-templates`) and the dismissed first-use 3D hint
 (`curvature-studio:orbit-hint-seen`) are optional local browser preferences. They are
@@ -176,7 +176,7 @@ not serialized. Fog is disabled. Drawing radii scale with the median positive ed
 
 `session.panels` optionally saves the boolean visibility of `histogram`,
 `inspector`, `legend`, and `hints`. `hints` controls the Interaction guide panel and `legend` controls shortcut text inside that guide (no separate legend panel). Missing settings default to true. Invalid known settings
-are rejected. Older readers can open these files but ignore the new visibility settings.
+are rejected.
 Histogram visibility is separate from `histogramCollapsed` and `histogramPos`; hiding a
 histogram does not remove its data or affect exports. The Results table's open state and
 compact Inspector's expanded state remain transient. On a compact screen (width ≤760px
@@ -242,7 +242,7 @@ aggregation, with all-unit regression tests. Weight changes must enter computati
 cache identities and history invalidation; layout and appearance changes must not.
 See [the weight contract and future acceptance checklist](docs/model-scope.md).
 
-canonical live edges also require explicit unit weight. Legacy omissions
+Canonical live edges require explicit unit weight. Legacy omissions
 are normalized at construction/import boundaries. Editor, serializer and math input
 shapes share `src/graph/edge.ts`; direct math and Worker inputs reject non-unit weights.
 The unchanged calculation descriptor is shared between persistence, Worker requests,
