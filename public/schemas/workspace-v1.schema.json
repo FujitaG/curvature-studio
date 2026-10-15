@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Curvature Studio comparison workspace v1",
+  "description": "Runtime also validates unique document IDs, A/B ordering, activeId references, projects, gradient normalization, extension depth and byte limits.",
+  "type": "object",
+  "required": [
+    "format",
+    "version",
+    "documents",
+    "mode",
+    "activeId",
+    "ratio",
+    "linked",
+    "distribution",
+    "metric",
+    "view",
+    "projection",
+    "colors",
+    "custom"
+  ],
+  "properties": {
+    "format": {
+      "const": "curvature-studio/workspace"
+    },
+    "version": {
+      "const": 1
+    },
+    "documents": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "side",
+          "project",
+          "viewport2d",
+          "camera2dMode"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "side": {
+            "enum": [
+              "A",
+              "B"
+            ]
+          },
+          "project": {
+            "$ref": "project-v1.schema.json"
+          },
+          "viewport2d": {
+            "type": "object",
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ],
+            "properties": {
+              "x": {
+                "type": "number",
+                "exclusiveMinimum": -10000000,
+                "exclusiveMaximum": 10000000
+              },
+              "y": {
+                "type": "number",
+                "exclusiveMinimum": -10000000,
+                "exclusiveMaximum": 10000000
+              },
+              "width": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "exclusiveMaximum": 10000000
+              },
+              "height": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "exclusiveMaximum": 10000000
+              }
+            }
+          },
+          "camera2dMode": {
+            "enum": [
+              "fit",
+              "manual"
+            ]
+          }
+        }
+      }
+    },
+    "mode": {
+      "enum": [
+        "single",
+        "compare"
+      ]
+    },
+    "activeId": {
+      "type": "string"
+    },
+    "ratio": {
+      "type": "number",
+      "minimum": 25,
+      "maximum": 75
+    },
+    "linked": {
+      "type": "boolean"
+    },
+    "distribution": {
+      "enum": [
+        "share",
+        "count"
+      ]
+    },
+    "metric": {
+      "enum": [
+        "keff",
+        "ollivier"
+      ]
+    },
+    "view": {
+      "enum": [
+        "2d",
+        "3d"
+      ]
+    },
+    "projection": {
+      "enum": [
+        "perspective",
+        "orthographic"
+      ]
+    },
+    "colors": {
+      "type": "object"
+    },
+    "custom": {
+      "type": "array"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  }
+}

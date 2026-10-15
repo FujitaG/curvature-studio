@@ -1,0 +1,82 @@
+{
+  "name": "curvature-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build && node scripts/check-public-assets.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "bake": "node scripts/generate-templates.mjs",
+    "qa:smoke": "node qa/smoke.mjs",
+    "qa:workspace": "node qa/workspace.mjs",
+    "check": "npm run bake:check && npm test && npm run build",
+    "qa:usability": "node qa/usability.mjs",
+    "qa:performance": "node qa/performance.mjs",
+    "qa:efficiency": "node qa/efficiency.mjs",
+    "qa:production": "node qa/production.mjs",
+    "qa:rendering": "node qa/rendering.mjs",
+    "qa:boundaries": "node qa/boundaries.mjs",
+    "qa:visibility": "node qa/visibility.mjs",
+    "qa:figures": "node qa/figures.mjs",
+    "qa:refinements": "node qa/refinements.mjs",
+    "qa:panels": "node qa/panels.mjs",
+    "qa:comparison": "node qa/comparison.mjs",
+    "qa:imports-layout": "node qa/imports-layout.mjs",
+    "qa:navigation": "node qa/navigation.mjs",
+    "qa:reopen3d": "node qa/reopen3d.mjs",
+    "qa:foundation": "node qa/foundation.mjs",
+    "preview:cloudflare": "wrangler dev --local --ip 127.0.0.1 --port 5191",
+    "deploy:check": "npm run build && wrangler deploy --dry-run",
+    "deploy": "npm run audit:all && npm run build && wrangler deploy",
+    "qa:hosting": "node qa/hosting.mjs",
+    "qa:guidance": "node qa/guidance.mjs",
+    "qa:threshold3d": "node qa/threshold3d.mjs",
+    "qa:button-layout": "node qa/button-layout.mjs",
+    "qa:results-scroll": "node qa/results-scroll.mjs",
+    "audit:runtime": "npm audit --omit=dev --audit-level=low",
+    "audit:all": "npm audit --audit-level=low",
+    "qa:cross-browser": "node qa/cross-browser.mjs",
+    "qa:end-comparison": "node qa/end-comparison.mjs",
+    "qa:math": "node qa/math-contract.mjs",
+    "test:math-sensitivity": "node scripts/check-math-sensitivity.mjs",
+    "prepare:public": "node scripts/prepare-public.mjs",
+    "bake:check": "node scripts/generate-templates.mjs --check",
+    "qa:templates": "node qa/templates.mjs"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.177.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.177.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "fake-indexeddb": "^6.2.5",
+    "jsdom": "^26.0.0",
+    "playwright": "^1.61.1",
+    "typescript": "^5.8.0",
+    "vite": "^7.0.0",
+    "vitest": "^4.1.11",
+    "wrangler": "4.150.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "license": "Apache-2.0",
+  "description": "Browser-based finite graph curvature, structural comparison, and figure export.",
+  "author": "Daishi Fujita",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FujitaG/curvature-studio.git"
+  },
+  "homepage": "https://studio.curvature.workers.dev",
+  "bugs": {
+    "url": "https://github.com/FujitaG/curvature-studio/issues"
+  }
+}

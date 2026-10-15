@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "Please cite this software version when reporting calculations made with Curvature Studio."
+title: "Curvature Studio"
+type: software
+authors:
+  - family-names: "Fujita"
+    given-names: "Daishi"
+    email: "dfujita@icems.kyoto-u.ac.jp"
+repository-code: "https://github.com/FujitaG/curvature-studio"
+url: "https://studio.curvature.workers.dev"
+version: "0.1.0"
+license: Apache-2.0
+abstract: >-
+  Browser application for editing and comparing finite, undirected, unit-weight
+  graphs, computing effective and Ollivier-Ricci curvature, and exporting results
+  and figures. Includes independent mathematical references and browser tests.
+keywords:
+  - graph curvature
+  - effective curvature
+  - Ollivier-Ricci curvature
+  - research software
